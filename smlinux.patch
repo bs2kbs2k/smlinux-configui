@@ -25,10 +25,4 @@
  }
  
  loademsdk(){
-@@ -1956,4 +1952,4 @@
- else
-        sleep 8
- fi
--theend
-\ No newline at end of file
-+theend
+
