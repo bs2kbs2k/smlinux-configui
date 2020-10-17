@@ -1,5 +1,5 @@
---- -   2020-10-17 18:50:39.809630481 +0900
-+++ smlinux     2020-10-17 18:48:24.999636435 +0900
+--- -	2020-10-17 18:50:39.809630481 +0900
++++ smlinux	2020-10-17 18:48:24.999636435 +0900
 @@ -586,17 +586,13 @@
  }
  
@@ -8,21 +8,27 @@
 -EDITORS=kate:epad:gedit:notepadqq:bluefish:geany:lime:medit:leafpad:nano:pico:micro:jed:emacs:vim:vi
 -IFS=":"
 -for editor in $EDITORS; do
--       $editor "$SMLINUX"/smlinuxcfg.txt
--       if [ $? -eq 0 ]; then
--               echo "$PATHDIR"/smlinux: line $(($LINENO - 2))":" "$editor": wow! command found!
--               echo
--               return
--       fi
+-	$editor "$SMLINUX"/smlinuxcfg.txt
+-	if [ $? -eq 0 ]; then
+-		echo "$PATHDIR"/smlinux: line $(($LINENO - 2))":" "$editor": wow! command found!
+-		echo
+-		return
+-	fi
 -done
 +if [ ! -f "$SMLINUX"/ui.py ]; then
-+       echo Getting conversion tools...
-+       wget -O- https://github.com/bs2kbs2k/smlinux-configui/raw/main/sml.ui > "$SMLINUX"/sml.ui
++	echo Getting conversion tools...
++	wget -O- https://github.com/bs2kbs2k/smlinux-configui/raw/main/sml.ui > "$SMLINUX"/sml.ui
 +        wget -O- https://github.com/bs2kbs2k/smlinux-configui/raw/main/ui.py > "$SMLINUX"/ui.py
-+       pip3 install pyqt5
++	pip3 install pyqt5
 +fi
 +echo "$SMLINUX"|python3 "$SMLINUX"/ui.py > "$SMLINUX"/smlinuxcfg.txt
  }
  
  loademsdk(){
-
+@@ -1956,4 +1952,4 @@
+ else
+ 	sleep 8
+ fi
+-theend
+\ No newline at end of file
++theend
