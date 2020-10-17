@@ -5,6 +5,14 @@ import sys
 import os.path
 app = QApplication(sys.argv)
 ui = uic.loadUi(os.path.join(input(),'sml.ui'))
+def dog(a):
+    ui.opt_GIT.setEnabled(a == 2)
+    ui.opt_BRANCH.setEnabled(a == 2)
+    ui.opt_PRESET.setEnabled(a == 0)
+def cat(a):
+    ui.opt_MAXJOBS.setEnabled(a == 2)
+ui.do_GIT.stateChanged.connect(dog)
+ui.do_MAXJOBS.stateChanged.connect(cat)
 ui.show()
 def getStatus(el):
     if isinstance(el, qw.QComboBox):
@@ -18,14 +26,6 @@ def getStatus(el):
 outcode = app.exec_()
 opts = [a[4:] for a in dir(ui) if a[:4]=='opt_']
 out = ''
-def dog(a):
-    ui.opt_GIT.setEnabled(a == 2)
-    ui.opt_BRANCH.setEnabled(a == 2)
-    ui.opt_PRESET.setEnabled(a == 0)
-def cat(a):
-    ui.opt_MAXJOBS.setEnabled(a == 2)
-ui.do_GIT.stateChanged.connect(dog)
-ui.do_MAXJOBS.stateChanged.connect(cat)
 for opt in opts:
     if opt == 'PRESET' and getStatus(ui.do_GIT) == 1:
         out += 'PRESET=INVALID\n'
