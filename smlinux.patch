@@ -21,7 +21,7 @@
 +        wget -O- https://github.com/bs2kbs2k/smlinux-configui/raw/main/ui.py > "$SMLINUX"/ui.py
 +	pip3 install pyqt5
 +fi
-+printf "$SMLINUX\n$SMLINUX/smlinuxcfg.txt"|python3 "$SMLINUX"/ui.py > "$SMLINUX"/smlinuxcfg.txt
++printf "$SMLINUX\n$SMLINUX/smlinuxcfg.txt\n"|python3 "$SMLINUX"/ui.py > "$SMLINUX"/smlinuxcfg.txt
  }
  
  loademsdk(){
